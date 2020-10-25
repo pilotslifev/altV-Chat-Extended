@@ -16,7 +16,7 @@ function invokeCmd(player, cmd, args) {
     }
 }
 
-alt.onClient('chatmessage', (player, msg) => {
+alt.onClient('chat:message', (player, msg) => {
     if (msg[0] === '/') {
         msg = msg.trim().slice(1);
 
@@ -62,7 +62,7 @@ alt.onClient('chatmessage', (player, msg) => {
             closePlayers.forEach(target => {
                 alt.emitClient(
                     target,
-                    'chatmessage',
+                    'chat:message',
                     player.name,
                     msg
                         .replace(/</g, '&lt;')
@@ -74,7 +74,7 @@ alt.onClient('chatmessage', (player, msg) => {
             farPlayers.forEach(target => {
                 alt.emitClient(
                     target,
-                    'chatmessage',
+                    'chat:message',
                     null,
                     `{707070} ${player.name}: ${msg
                         .replace(/</g, '&lt;')
@@ -87,7 +87,7 @@ alt.onClient('chatmessage', (player, msg) => {
 
         alt.emitClient(
             null,
-            'chatmessage',
+            'chat:message',
             player.name,
             msg
                 .replace(/</g, '&lt;')
@@ -107,7 +107,7 @@ function Distance(vector1, vector2) {
 }
 
 export function send(player, msg) {
-    alt.emitClient(player, 'chatmessage', null, msg);
+    alt.emitClient(player, 'chat:message', null, msg);
 }
 
 export function broadcast(msg) {

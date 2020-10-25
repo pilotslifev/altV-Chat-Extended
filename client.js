@@ -25,8 +25,8 @@ view.on('chatloaded', () => {
 	loaded = true;
 });
 
-view.on('chatmessage', (text) => {
-	alt.emitServer('chatmessage', text);
+view.on('chat:message', (text) => {
+	alt.emitServer('chat:message', text);
   
 	if (text !== undefined && text.length >= 1)
 		alt.emit('messageSent', text);
@@ -56,7 +56,7 @@ export function isChatOpen() {
 	return opened;
 }
 
-alt.onServer('chatmessage', pushMessage);
+alt.onServer('chat:message', pushMessage);
 
 alt.on('keyup', (key) => {
 	if (!loaded)

@@ -198,7 +198,7 @@ function hideChat(state) {
 document.querySelector('#message').addEventListener('submit', function(e) {
 	e.preventDefault();
 	var message = msgInputLine.value;
-	alt.emit('chatmessage', message);
+	alt.emit('chat:message', message);
 	saveBuffer();
 	msgInputLine.value = '';
 	closeChat();
